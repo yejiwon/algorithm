@@ -1,10 +1,10 @@
-def numberOfWaysToMakeChange(n, denoms):
-    ways = [0 for amount in range(n+1)]
+def numberOfWaysToMakeChange(n, coins):
+    ways = [0 for _ in range(n+1)]  # coins로 값 n을 만들 수 있는 방법
     ways[0] = 1
 
-    for denom in denoms:
+    for coin in coins:
         for amount in range(1, n+1):
-            if denom <= amount:
-                ways[amount] += ways[amount - denom]
+            if coin <= amount:
+                ways[amount] += ways[amount - coin]
 
     return ways[n]
